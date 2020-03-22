@@ -1,7 +1,9 @@
 import React from "react";
 
+import { Layout } from "./shared/Layout";
+
 const App = () => {
-    return <>App</>;
+  return <Layout>App</Layout>;
 };
 
-export {App};
+export default App;
