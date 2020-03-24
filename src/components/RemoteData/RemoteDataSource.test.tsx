@@ -35,7 +35,7 @@ it("should display suspense fallback when promise is in progress", async () => {
 });
 
 it("should fetch remote data when remote data is in progress", async () => {
-  fetchMock.get("http://localhost:3002/api/remote-data-url", {});
+  fetchMock.get("http://localhost:3300/api/remote-data-url", {});
 
   const { getByText } = render(
     <Suspense fallback={<span>Loader...</span>}>
@@ -53,8 +53,8 @@ it("should fetch remote data when remote data is in progress", async () => {
 });
 
 it("should fetch remote data when params have changed", async () => {
-  fetchMock.get("http://localhost:3002/api/remote-url-one", {});
-  fetchMock.get("http://localhost:3002/api/remote-url-two", {});
+  fetchMock.get("http://localhost:3300/api/remote-url-one", {});
+  fetchMock.get("http://localhost:3300/api/remote-url-two", {});
 
   const TestComponent = () => {
     const [url, setUrl] = useState("remote-url-one");

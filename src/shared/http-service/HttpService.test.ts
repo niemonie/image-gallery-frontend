@@ -6,9 +6,9 @@ import fetchMock from "fetch-mock";
 afterEach(fetchMock.restore);
 
 const crateFetchTestFor = (method: "get" | "delete") => async () => {
-  const URL = "http://localhost:4000/api/users";
+  const URL = "http://localhost:4000/api/images";
   const HEADERS = { Authorization: "fake-token" };
-  const MOCK_RESPONSE = { users: [] };
+  const MOCK_RESPONSE = { images: [] };
 
   fetchMock[method](URL, MOCK_RESPONSE);
 
@@ -22,9 +22,9 @@ const crateFetchTestFor = (method: "get" | "delete") => async () => {
   const spyHttpMethod = jest.spyOn(httpService, method);
   const spyFetch = jest.spyOn(window, "fetch");
 
-  const response = await httpService[method]("/users");
+  const response = await httpService[method]("/images");
 
-  expect(spyHttpMethod).toHaveBeenCalledWith("/users");
+  expect(spyHttpMethod).toHaveBeenCalledWith("/images");
   expect(spyFetch).toHaveBeenCalledWith(URL, { headers: HEADERS, method });
   expect(response).toEqual(MOCK_RESPONSE);
 };
@@ -39,16 +39,16 @@ it(
 );
 
 const createFetchCancellationTestFor = (method: "get" | "delete") => () => {
-  const URL = "http://localhost:4000/api/users";
+  const URL = "http://localhost:3300/api/images";
   const HEADERS = { Authorization: "fake-token" };
-  const MOCK_RESPONSE = { users: [] };
+  const MOCK_RESPONSE = { images: [] };
 
   fetchMock[method](URL, MOCK_RESPONSE);
 
   const abortController = new AbortController();
 
   const options: Options = {
-    host: "http://localhost:4000/api",
+    host: "http://localhost:3300/api",
     headers: HEADERS,
   };
 
@@ -57,7 +57,7 @@ const createFetchCancellationTestFor = (method: "get" | "delete") => () => {
   const spyFetch = jest.spyOn(window, "fetch");
   const spyAbortController = jest.spyOn(abortController, "abort");
 
-  const promise = httpService[method]("/users", {
+  const promise = httpService[method]("/images", {
     signal: abortController.signal,
   });
 
@@ -84,7 +84,7 @@ it(
 const createSendDataCancellationTestFor = (
   method: "post" | "put" | "patch"
 ) => () => {
-  const URL = "http://localhost:4000/api/users";
+  const URL = "http://localhost:3300/api/images";
   const HEADERS = { Authorization: "fake-token" };
   const BODY = {};
 
@@ -93,7 +93,7 @@ const createSendDataCancellationTestFor = (
   const abortController = new AbortController();
 
   const options: Options = {
-    host: "http://localhost:4000/api",
+    host: "http://localhost:3300/api",
     headers: HEADERS,
   };
 
@@ -102,7 +102,7 @@ const createSendDataCancellationTestFor = (
   const spyFetch = jest.spyOn(window, "fetch");
   const spyAbortController = jest.spyOn(abortController, "abort");
 
-  const promise = httpService[method]("/users", BODY, {
+  const promise = httpService[method]("/images", BODY, {
     signal: abortController.signal,
   });
 
@@ -132,14 +132,14 @@ it(
 );
 
 const createLocalOptionsTestFor = (method: "get" | "delete") => async () => {
-  const URL = "http://localhost:5000/api/users";
+  const URL = "http://localhost:5000/api/images";
   const HEADERS = { Authorization: "new-fake-token" };
-  const MOCK_RESPONSE = { users: [] };
+  const MOCK_RESPONSE = { images: [] };
 
   fetchMock[method](URL, MOCK_RESPONSE);
 
   const options: Options = {
-    host: "http://localhost:4000/api",
+    host: "http://localhost:3300/api",
     headers: { Authorization: "fake-token" },
   };
 
@@ -171,13 +171,13 @@ it(
 );
 
 const createFailureTestFor = (method: "get" | "delete") => async () => {
-  const URL = "http://localhost:4000/api/users";
+  const URL = "http://localhost:3300/api/users";
   const HEADERS = { Authorization: "fake-token" };
 
   fetchMock[method](URL, { ok: false, status: 500 });
 
   const options: Options = {
-    host: "http://localhost:4000/api",
+    host: "http://localhost:3300/api",
     headers: HEADERS,
   };
 
@@ -201,7 +201,7 @@ it("should http delete method and failure", createFailureTestFor("delete"));
 const createSendDataTestFor = (
   method: "post" | "put" | "patch"
 ) => async () => {
-  const URL = "http://localhost:4000/api/users";
+  const URL = "http://localhost:3300/api/users";
   const REQ_BODY = { user: { name: "Joe Doe" } };
   const RES_BODY = { user: { id: 1 } };
   const HEADERS = { Authorization: "fake-token" };
@@ -209,7 +209,7 @@ const createSendDataTestFor = (
   fetchMock[method](URL, RES_BODY);
 
   const options: Options = {
-    host: "http://localhost:4000/api",
+    host: "http://localhost:3300/api",
     headers: HEADERS,
   };
 
@@ -245,13 +245,13 @@ it(
 const createFailureSendDataTestFor = (
   method: "post" | "put" | "patch"
 ) => async () => {
-  const URL = "http://localhost:4000/api/users";
+  const URL = "http://localhost:3300/api/users";
   const HEADERS = { Authorization: "fake-token" };
 
   fetchMock[method](URL, { ok: false, status: 500 });
 
   const options: Options = {
-    host: "http://localhost:4000/api",
+    host: "http://localhost:3300/api",
     headers: HEADERS,
   };
 
