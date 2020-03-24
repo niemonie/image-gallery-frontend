@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 import { Grid } from "theme";
 
-import { IChildrenProp } from "types/IChildrenProp";
+import { ChildrenProp } from "types/ChildrenProp";
 
-interface IProps extends IChildrenProp {}
+interface IProps extends ChildrenProp {}
 
 const Layout = ({ children }: IProps) => {
   return (

@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import { IChildrenProp } from "./types/IChildrenProp";
+import { ChildrenProp } from "./types/ChildrenProp";
 
-interface IProps extends IChildrenProp {}
+interface IProps extends ChildrenProp {}
 
 const Providers = ({ children }: IProps) => {
   return <Router>{children}</Router>;

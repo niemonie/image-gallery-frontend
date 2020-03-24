@@ -5,14 +5,14 @@ import { fetcherFn } from "swr/dist/types";
 import { responseInterface, useSuspense } from "./useSuspense";
 import { InternalErrorPage } from "../Pages";
 
-import { IQueryParams } from "types/IQueryParams";
+import { QueryParams } from "types/QueryParams";
 
 type ChildrenFn<Data> = (data: responseInterface<Data>) => ReactNode;
 
 export interface IRemoteDataSourceProps<Data> {
   url: string;
   children: ReactNode | ChildrenFn<Data>;
-  params?: IQueryParams;
+  params?: QueryParams;
   config?: ConfigInterface<Data, Error>;
   fetcher?: fetcherFn<Data>;
   errorFallback?: (error: Error) => ReactNode;

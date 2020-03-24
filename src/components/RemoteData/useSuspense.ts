@@ -4,7 +4,7 @@ import { fetcherFn } from "swr/dist/types";
 import { buildUrl } from "utils/buildUrl";
 import { httpService } from "utils/ajax/http-service";
 
-import { IQueryParams } from "types/IQueryParams";
+import { QueryParams } from "types/QueryParams";
 
 export type responseInterface<Data> = {
   data: Data;
@@ -15,7 +15,7 @@ export type responseInterface<Data> = {
 
 export const useSuspense = <Data>(
   url: string,
-  params?: IQueryParams,
+  params?: QueryParams,
   config?: ConfigInterface<Data>,
   fetcher: fetcherFn<Data> = (url) => httpService.get<Data>(url)
 ) => {

@@ -1,7 +1,7 @@
-import { IQueryParams } from "types/IQueryParams";
+import { QueryParams } from "types/QueryParams";
 import { stringifyUrlParams } from "./stringifyUrlParams";
 
-export const buildUrl = (path: string, params?: IQueryParams) => {
+export const buildUrl = (path: string, params?: QueryParams) => {
   if (!params) {
     return path;
   }

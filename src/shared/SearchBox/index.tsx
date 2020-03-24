@@ -10,33 +10,33 @@ interface IProps {
 }
 
 const SearchBox = ({ placeholderMessage }: IProps) => {
-  const { setParam, deleteParam } = useParams();
+  const { deleteParam, setParamValue } = useParams();
   const [isInputFocused, setIsInputFocused] = useState(false);
 
   const [searchInputValue, setSearchInputValue] = useState("");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setParam(searchInputValue, "searchTerm");
+    setParamValue(searchInputValue, "q");
+    setParamValue("1", "page");
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchInputValue(event.target.value);
 
     if (event.target.value === "") {
-      deleteParam("searchTerm");
+      deleteParam("q");
     }
   };
 
   const handleReset = () => {
     setSearchInputValue("");
-    deleteParam("searchTerm");
+    deleteParam("q");
   };
 
   return (
     <StyledForm onSubmit={handleSubmit}>
       <StyledInput
-        // placeholder={placeholderMessage("Oznaczenie, komórka, pracownik")}
         placeholder={placeholderMessage}
         type="text"
         value={searchInputValue}

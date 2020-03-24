@@ -10,13 +10,6 @@ const colors = {
   white: "#fff",
 };
 
-const padding = {
-  xsmall: "0.2rem",
-  small: "1rem",
-  medium: "2rem",
-  large: "4rem",
-};
-
 const fontSizes = {
   regular: "1.3rem",
   large: "1.8rem",
@@ -27,6 +20,12 @@ const lineHeights = {
   regular: "1.538462",
   big: "2",
   small: "1.2",
+};
+
+const padding = {
+  small: "1rem",
+  medium: "2rem",
+  large: "4rem",
 };
 
 export const theme: DefaultTheme = {
@@ -41,21 +40,17 @@ export const theme: DefaultTheme = {
       fontDark: colors.darkGray,
       icon: colors.gray,
       iconDark: colors.darkGray,
-      buttonDefault: colors.darkGray,
       border: colors.lighterGray,
     },
     fonts: {
       main: "Roboto, sans-serif",
     },
-    padding: {
-      box: padding.medium,
-      boxVertical: padding.small,
-      container: padding.large,
-    },
     fontSizes: {
       main: fontSizes.regular,
-      title: fontSizes.large,
-      headingPrimary: fontSizes.xlarge,
+    },
+    padding: {
+      box: padding.medium,
+      container: padding.large,
     },
     lineHeights: {
       main: lineHeights.regular,

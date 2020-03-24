@@ -1,4 +1,4 @@
-export interface IQueryParams {
+export interface QueryParams {
   limit: number;
   page: number;
 }

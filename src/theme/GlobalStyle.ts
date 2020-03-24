@@ -16,6 +16,21 @@ const GlobalStyle = createGlobalStyle`
   button {
   outline: none;
   }
+  
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+font-size: 56.25%
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+ font-size: 50%;
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+font-size: 75%;
+}
 `;
 
 export { GlobalStyle };

@@ -11,7 +11,6 @@ declare module "styled-components" {
     Icon = "icon",
     IconDark = "iconDark",
     FontDark = "fontDark",
-    ButtonDefault = "buttonDefault",
     Border = "border",
     MarkedBackgroundDarker = "markedBackgroundDarker",
   }
@@ -20,13 +19,10 @@ declare module "styled-components" {
   }
   enum FontSizes {
     Main = "main",
-    Title = "title",
-    HeadingPrimary = "headingPrimary",
   }
 
   enum Padding {
     Box = "box",
-    BoxVertical = "boxVertical",
     Container = "container",
   }
 
@@ -46,11 +42,11 @@ declare module "styled-components" {
       fontSizes: {
         [key in FontSizes]: string;
       };
-      padding: {
-        [key in Padding]: string;
-      };
       lineHeights: {
         [key in LineHeights]: string;
+      };
+      padding: {
+        [key in Padding]: string;
       };
     };
   }
